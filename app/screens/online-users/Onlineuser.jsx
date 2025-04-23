@@ -16,8 +16,9 @@ socket.on('onlineusers', (users) => {
     // Added user to dependency array
 const handleonPress=(value,e)=>{
   e.preventDefault()
-  console.log(value)
-  if(value.username===user.name){return}
+  console.log("value",value.name)
+  console.log('user',user,user.username)
+  if(value.name===user.username){return}
   setchat(value)
 } 
   return (
