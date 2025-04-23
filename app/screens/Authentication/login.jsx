@@ -20,8 +20,8 @@ const handleonchange=()=>{
 }
   return (
        <View className="w-full h-screen flex items-center justify-center bg-primary">
-
     <View className="flex w-[85%] relative border bg-secondary h-[45%] gap-2 rounded-2xl p-5">
+<Text>do not repeat name</Text>
 <Text className='text-primary font-semibold text-3xl'>Login</Text>
 <TextInput className='border mt-5 rounded-md bg-secondary ' onChangeText={setUsername} placeholder='Eneter your name'></TextInput>
 
