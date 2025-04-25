@@ -10,7 +10,7 @@ export default function App() {
   const {userloged,setsocket,socket,chat}=useContext(context)
 useEffect(()=>{
   if(!socket){
-    const Socket=io('http://192.168.186.218:3000')
+    const Socket=io('https://basic-mobile-chat-app-backend.onrender.com')
     setsocket(Socket)
   }
 },[])

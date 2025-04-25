@@ -6,7 +6,7 @@ export default function Onlineuser() {
 useEffect(() => {
 socket.emit('register', user)
 socket.on('onlineusers', (users) => {
-  console.log(users)
+
   setalluser(users)})
   
 // Add check for socket and user
@@ -16,22 +16,26 @@ socket.on('onlineusers', (users) => {
     // Added user to dependency array
 const handleonPress=(value,e)=>{
   e.preventDefault()
-  console.log("value",value.name)
-  console.log('user',user,user.username)
-  if(value.name===user.username){return}
+  
+  if(value.name===user){return}
   setchat(value)
 } 
   return (
-    <View className='flex w-screen h-screen justify-start gap-5 bg-primary p-5 '>
-      <Text className='text-secondary font-semibold text-4xl'>ONLINE USERS</Text>
-      {alluser.map((user, i) => (
-        <TouchableOpacity onPress={(e)=>{handleonPress(user,e)}} key={i}>
-          <View className='flex flex-row justify-start gap-2 p-2 w-full h-16 border-b-secondary bg-primary border-b rounded-lg pl-2'>
+    <View className='flex w-screen h-screen justify-start gap-5  '>
+      <Text className='text-secondary bg-primary p-5 font-semibold text-4xl'>ONLINE USERS</Text>
+      {alluser.length===1&&<Text className='text-purple-300 font-semibold text-sm'>No one is online</Text>}
+      {alluser.map((User, i) =>{
+        if(user==User.name){return
+        }
+        return(
+        <TouchableOpacity className='w-full px-5 flex ' onPress={(e)=>{handleonPress(User,e)}} key={i}>
+          <View className='flex flex-row justify-start gap-2 p-2 w-full h-16 border-b-primary  border-b rounded-lg pl-2'>
 
-            <Text className='text-secondary'>{user.name}</Text>
+            <Text className='text-primary font-semibold text-2xl'>{User.name}</Text>
           </View>
         </TouchableOpacity>
-      ))}
+      )
+})}
     </View>
   )
 }
