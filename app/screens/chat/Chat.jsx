@@ -4,7 +4,7 @@ import {context}from'../../context/context'
 import { Socket } from 'socket.io-client'
 export default function Chat() {
   const [msg,setmsg]=useState([])
-  
+
 const {chat,setchat,alluser,socket}=useContext(context)
 const [text,settext]=useState()
 const [turn,setturn]=useState(0)
@@ -15,10 +15,9 @@ const hideSubscription=  Keyboard.addListener('keyboardDidHide',(e)=>{
   setKeyboardHeight(e.endCoordinates.height)
 })
 const showSubscription= Keyboard.addListener('keyboardDidShow',(e)=>{
-  console.log(e.endCoordinates.height)
     setKeyboardHeight(e.endCoordinates.height)
   })
-  
+
 
   return () => {
     showSubscription.remove();
